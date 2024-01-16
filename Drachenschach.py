@@ -25,7 +25,7 @@ def durchsuchen(i):
         if not (sp[j] or diag1[i+j] or diag2[i-j] or springer[(i,j)]):
             sp[j] = diag1[i+j] = diag2[i-j] = springer[(i,j)] = True
             durchsuchen(i+1)
-            sp[j] = diag1[i+j] = diag2[i-j] = springer[(i,j)] = False
+            sp[j] = diag1[i+j] = diag2[i-j] = springer[(i,j)] = False # zwischen Initielisierung
         
 Aufrufe=Anzahl=0 #initialisierung es beginnt bei 0 
 durchsuchen(0) # wieder beginnt bei 0 
