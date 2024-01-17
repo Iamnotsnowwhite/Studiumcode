@@ -1,5 +1,6 @@
 #Drachenschach
-#Der Drache vereignigt die Bewegungsmöglichkeiten einer Drachen und eines Springers im klassischen Sachspiel:
+#Der Drache vereignigt die Bewegungsmöglichkeiten einer Drachen und eines Springers 
+#im klassischen Sachspiel:
 #Springer: das Pferd 
 #zusätzlich kann der Drache von pisition (i,j) zu (i',j'), wenn {|i-i'|,|j-j'|} = {1,2}
 #{|i-i'|,|j-j'|} = {1,2} diese Bediegung simuliert genau wie ein Springer funktioniert.
@@ -9,11 +10,12 @@ n = 8
 Drachen = [0]*n
 
 
-# move =[(i + 2, j + 1), (i + 2, j - 1), (i - 2, j + 1), (i - 2, j - 1),(i + 1, j + 2), (i + 1, j - 2), (i - 1, j + 2), (i - 1, j - 2)]
-sp    = {i:False for i in range(n)} # 行
-diag1 = {i:False for i in range(2*n-1)} # 捺 2*n-1是对角线的数量
-diag2 = {i:False for i in range(-n+1,n)} # 撇 
-springer = {(i,j):False for i in range(n) for j in range(n)} # ist genau wie der Schachbrett
+# move =[(i+2,j+1),(i+2,j-1),(i-2,j+1),(i-2,j-1),(i+1,j+2),(i+1,j-2),(i-1,j+2),(i-1,j-2)]
+sp    = {i:False for i in range(n)} 
+diag1 = {i:False for i in range(2*n-1)} 
+diag2 = {i:False for i in range(-n+1,n)} 
+springer = {(i,j):False for i in range(n) for j in range(n)} 
+# ist genau wie der Schachbrett
 #erstellen die Schlüssel in dictionary
 
 def springer_bewegung(i, j):
@@ -21,7 +23,8 @@ def springer_bewegung(i, j):
     moves = [(i + 2, j + 1), (i + 2, j - 1), (i - 2, j + 1), (i - 2, j - 1),
     (i + 1, j + 2), (i + 1, j - 2), (i - 1, j + 2), (i - 1, j - 2)]
 
-    return [(x, y) for x, y in moves if 0 <= x < n and 0 <= y < n] # es kann nur im Bereich 0 bis n sein
+    return [(x, y) for x, y in moves if 0 <= x < n and 0 <= y < n] 
+    # es kann nur im Bereich 0 bis n sein
     # list comprehention
 
 def durchsuchen(i):
