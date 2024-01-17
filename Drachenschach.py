@@ -26,7 +26,7 @@ def springer_bewegung(i, j):
 
 def durchsuchen(i):
     global Aufrufe,Anzahl #globale Variable
-    Aufrufe+=1 
+    Aufrufe +=1 
     if i==n:
         Anzahl += 1
         print(Anzahl,Drachen) # hier wird nicht zu getroffen 
@@ -38,9 +38,9 @@ def durchsuchen(i):
                 sp[j] = diag1[i+j] = diag2[i-j] = True
                 moves = [True for _ in moves]
                 durchsuchen(i + 1)
-                if keinKonflikt(i) == False: # wenn false dann gibt es Konflikt
-                    i += 1 
-                    durchsuchen(i)
+                # if keinKonflikt(i) == False: # wenn false dann gibt es Konflikt
+                #     i += 1 
+                #     durchsuchen(i)
                 sp[j] = diag1[i+j] = diag2[i-j] = False 
                 moves = [False for _ in moves]
 
