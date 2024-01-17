@@ -22,11 +22,23 @@ def durchsuchen(i):
         return
     for j in range(n):
         dame[i]=j
-        if not (sp[j] or diag1[i+j] or diag2[i-j] or springer[(i,j)]):
-            sp[j] = diag1[i+j] = diag2[i-j] = springer[(i,j)] = True
+        if not (sp[j] or diag1[i+j] or diag2[i-j] or checkspringer(i-1,j-2) or checkspringer(i-2,j-1) or checkspringer(i-1,j+2) or checkspringer(i-2,j+1) or checkspringer(i+1,j+2) or checkspringer(i+2,j+1) or checkspringer(i+2,j-1) or checkspringer(i+1,j-2) or checkspringer(i,j-2)):
+            sp[j] = diag1[i+j] = diag2[i-j] = springer[checkspringer2(i-1,j-2)] = springer[checkspringer(i-2,j-1)] = springer[checkspringer(i-1,j+2)] = springer[checkspringer(i-2,j+1)] = springer[checkspringer(i+1,j+2)] = springer[checkspringer(i+2,j+1)] = springer[checkspringer(i+2,j-1)] = springer[checkspringer(i+1,j-2)] = True
             durchsuchen(i+1)
-            sp[j] = diag1[i+j] = diag2[i-j] = springer[(i,j)] = False # zwischen Initielisierung
+            sp[j] = diag1[i+j] = diag2[i-j] = springer[checkspringer2(i-1,j-2)] = springer[checkspringer(i-2,j-1)] = springer[checkspringer(i-1,j+2)] = springer[checkspringer(i-2,j+1)] = springer[checkspringer(i+1,j+2)] = springer[checkspringer(i+2,j+1)] = springer[checkspringer(i+2,j-1)] = springer[checkspringer(i+1,j-2)] = False # zwischen Initielisierung
         
+def checkspringer(i,j):
+    if i < 0 or i > 7 or j < 0 or j > 7 :
+        return False
+    else:
+        return springer[(i,j)]
+    
+def checkspringer2(i,j):
+    if i < 0 or i > 7 or j < 0 or j > 7 :
+        return None
+    else:
+        return (i,j)
+
 Aufrufe=Anzahl=0 #initialisierung es beginnt bei 0 
 durchsuchen(0) # wieder beginnt bei 0 
 
@@ -40,3 +52,14 @@ print ("primitive Methode")
 print (Aufrufe,"Aufrufe.",Anzahl,"Lösungen")
 print (f'{n}**{n}={n**n}. {n}**{n+1}//{n-1}={n**(n+1)//(n-1)}.')
 
+"""
+def kleinstes(n):
+    while True:
+        durchsuchen(0)   # Führe den Algorithmus aus
+        if Anzahl == 0:  # Wenn keine Lösung gefunden wurde
+            break
+        n += 1
+
+kleinstesbrett = kleinstes(2)
+print(f"Kleinste Schachbrettgröße für n Drachen: {kleinstesbrett}")
+"""
